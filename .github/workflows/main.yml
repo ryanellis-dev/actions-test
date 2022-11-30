@@ -35,12 +35,12 @@ jobs:
   #         echo Add other actions to build,
   #         echo test, and deploy your project.
 
-  matrix-test:
-    runs-on: ubuntu-latest
+  deploy-test:
+    name: Deploy - ${{ matrix.environment }}
     strategy:
       matrix:
-        fruit: [apple, orange, banana]
-        veg: [carrot, lettuce]
-    
-    steps:
-      - run: echo ${{ matrix.fruit }} - ${{ matrix.veg }}
+        environment: [Staging, Production]
+    uses: ./deploy.yml
+    with:
+      environment: ${{ matrix.environment }}
+    secrets: inherit

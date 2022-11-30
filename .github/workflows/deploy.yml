@@ -1,0 +1,22 @@
+name: Deploy
+
+on:
+  workflow_call:
+    inputs:
+      environment:
+        required: true
+        type: string
+    secrets:
+      DATABASE_URL:
+        required: true
+
+jobs:
+  echo:
+    runs-on: ubuntu-latest
+    steps:
+      - run: "echo ${{ secrets.DATABASE_URL }} for environment: ${{ inputs.environment }}"
+
+  hello:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "Hello World!"
