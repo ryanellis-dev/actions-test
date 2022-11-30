@@ -40,7 +40,7 @@ jobs:
     strategy:
       matrix:
         environment: [Staging, Production]
-    uses: ./deploy.yml
+    uses: ./.github/workflows/deploy.yml
     with:
       environment: ${{ matrix.environment }}
     secrets: inherit
