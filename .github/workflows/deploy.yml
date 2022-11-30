@@ -18,6 +18,6 @@ jobs:
 
   done:
     runs-on: ubuntu-latest
-    needs: [echo]
+    needs: [release]
     steps:
       - run: echo "### Hello world from ${{ inputs.environment }}! :rocket:" >> $GITHUB_STEP_SUMMARY
