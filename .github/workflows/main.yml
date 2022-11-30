@@ -35,12 +35,11 @@ jobs:
   #         echo Add other actions to build,
   #         echo test, and deploy your project.
 
-  deploy-test:
+  deploy:
     name: Deploy - ${{ matrix.environment }}
     strategy:
       matrix:
-        environment: [Staging, Production]
+        environment: [staging, production]
     uses: ./.github/workflows/deploy.yml
     with:
       environment: ${{ matrix.environment }}
-    secrets: inherit

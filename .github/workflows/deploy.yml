@@ -6,13 +6,11 @@ on:
       environment:
         required: true
         type: string
-    secrets:
-      DATABASE_URL:
-        required: true
 
 jobs:
   echo:
     runs-on: ubuntu-latest
+    environment: ${{ inputs.environment }}
     steps:
       - run: "echo ${{ secrets.DATABASE_URL }} for environment: ${{ inputs.environment }}"
 
