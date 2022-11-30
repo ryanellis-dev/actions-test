@@ -11,8 +11,10 @@ jobs:
   echo:
     runs-on: ubuntu-latest
     environment: ${{ inputs.environment }}
+    env:
+      DATABASE_URL: ${{ secrets.DATABASE_URL }}
     steps:
-      - run: "echo ${{ secrets.DATABASE_URL }} for environment: ${{ inputs.environment }}"
+      - run: "echo ${{ env.DATABASE_URL }} for environment: ${{ inputs.environment }}"
 
   hello:
     runs-on: ubuntu-latest
