@@ -35,6 +35,30 @@ jobs:
   #         echo Add other actions to build,
   #         echo test, and deploy your project.
 
+  json-test:
+    runs-on: ubuntu-latest
+    env:
+      json: |
+        {
+          "tags": [
+            "ghcr.io/thg-headless/vega-api:0.0.1",
+            "ghcr.io/thg-headless/vega-api:latest"
+          ],
+          "labels": {
+            "org.opencontainers.image.title": "vega-api",
+            "org.opencontainers.image.description": "",
+            "org.opencontainers.image.url": "https://github.com/THG-Headless/vega-api",
+            "org.opencontainers.image.source": "https://github.com/THG-Headless/vega-api",
+            "org.opencontainers.image.version": "0.0.1",
+            "org.opencontainers.image.created": "2022-12-01T11:06:40.527Z",
+            "org.opencontainers.image.revision": "a9d4e5583ebffe6bc3a7d836d5341727d09c4d27",
+            "org.opencontainers.image.licenses": ""
+          }
+        }
+    steps:
+      - run: echo ${{ fromJson(env.json).tags[0] }}
+
+
   deploy-matrix:
     name: Matrix Deploy - ${{ matrix.environment }}
     strategy:
